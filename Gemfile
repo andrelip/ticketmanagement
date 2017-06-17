@@ -70,3 +70,5 @@ gem 'breakfast'
 # JSON Web Token
 gem 'jwt'
 gem 'gon'
+gem 'grape'
+gem 'grape_logging'

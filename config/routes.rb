@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   # root to: "home#index"
 
   get "test_api" => "ticket_panel#test_jwt"
+
+  # Grape API
+  mount API::API => '/api'
 end

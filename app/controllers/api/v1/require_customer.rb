@@ -1,11 +1,16 @@
 module API
   module V1
-    module JWT
+    module RequireCustomer
       # if you're using Grape outside of Rails, you'll have to use Module#included hook
       extend ActiveSupport::Concern
 
 
       included do
+
+        before do
+          error!('Unauthorized', 401) unless user_id_in_token?
+        end
+
         helpers do
           # API-wide helper to declare params
           def http_token
@@ -24,10 +29,14 @@ module API
 
           def current_user
             if user_id_in_token?
-              User.find(auth_token[:user_id])
+              @user ||= User.find(auth_token[:user_id])
             else
               error_response(message: "Internal server error", status: 500)
             end
+          end
+
+          def customer
+            @customer ||= Profiles::Customer.find_by user_id: current_user.id
           end
         end
       end

@@ -10,9 +10,26 @@ module API
           log_level: 'debug'
 
       resource :test do
-        desc "Simple test JWT"
+        desc "Just test jwt"
         get do
-          {status: customer}
+          {customer: customer, user: current_user}
+        end
+      end
+
+      resource :create do
+        desc "Create a ticket"
+        params do
+          requires :name, type: String, desc: "Shot description of the problem"
+          requires :message, type: String, desc: "Full message of the problem"
+        end
+        post do
+          ticket = TicketSupport.register_ticket customer.id, params[:name], params[:message]
+          if ticket[:status] == :ok
+            { data: ticket[:data] }
+          else
+            status 400
+            { errors: ticket[:errors] }
+          end
         end
       end
     end

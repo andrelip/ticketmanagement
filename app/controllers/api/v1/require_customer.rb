@@ -36,7 +36,7 @@ module API
           end
 
           def customer
-            @customer ||= Profiles::Customer.find_by user_id: current_user.id
+            @customer ||= Profiles.get_customer(current_user.id)
           end
         end
       end

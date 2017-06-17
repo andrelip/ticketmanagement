@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # For auto-reload and BDD
   gem 'guard-rspec', require: false
+  # For better inspect
+  gem 'awesome_print'
 end
 
 group :development do

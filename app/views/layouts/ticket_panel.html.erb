@@ -7,7 +7,6 @@
   <%= Gon::Base.render_data %>
   <%= stylesheet_link_tag "/assets/app.css" %>
   <%= javascript_include_tag "/assets/app.js" %>
-  <script>require('frontend/js/app').init();</script>
   <%= breakfast_autoreload_tag %>
 </head>
 
@@ -16,5 +15,6 @@
 <p class="alert"><%= alert %></p>
 <p>--- No art / Only Architeture ---</p>
 <%= yield %>
+<script>require('frontend/js/app').init();</script>
 </body>
 </html>

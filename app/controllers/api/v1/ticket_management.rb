@@ -32,6 +32,47 @@ module API
           end
         end
       end
+
+      resource :show do
+        desc "Show a ticket"
+        params do
+          requires :ticket_id, type: Integer, desc: "ID of the ticket"
+        end
+        get do
+          ticket = TicketSupport.get_ticket_for_customer customer.id, params[:ticket_id]
+          if ticket
+            { data: ticket }
+          else
+            status 400
+            { error: "Ticket not found or does not belong to you" }
+          end
+        end
+      end
+
+      resource :list do
+        desc "Create a ticket"
+        get do
+          tickets = TicketSupport.customer_tickets customer.id
+          { data: tickets }
+        end
+      end
+
+      resource :update do
+        desc "Update a ticket status"
+        params do
+          requires :ticket_id, type: String, desc: "Ticket ID"
+        end
+        patch do
+          ticket = TicketSupport.get_ticket_for_customer customer.id, params[:ticket_id]
+          ticket = TicketSupport.update_ticket ticket, params
+          if ticket[:status] == :ok
+            { data: ticket[:data] }
+          else
+            status 400
+            { errors: ticket[:errors] }
+          end
+        end
+      end
     end
   end
 end

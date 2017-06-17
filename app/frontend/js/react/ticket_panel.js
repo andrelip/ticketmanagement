@@ -23,8 +23,9 @@ class App extends Component {
         <Router>
           <div>
             <ul className="top_navigation">
-              <li><Link to="/ticket_panel">Global</Link></li>
-              <li><Link to="/ticket_panel/closed">Comentários</Link></li>
+              <li><Link to="/ticket_panel/opened_tickets">Opened Tickets</Link></li>
+              <li><Link to="/ticket_panel/closed">Tickets</Link></li>
+              <li><Link to="/ticket_panel/new_ticket">New Ticket</Link></li>
             </ul>
 
             <hr/>

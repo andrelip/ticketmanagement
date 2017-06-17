@@ -1,3 +1,195 @@
-// Your applications SCSS file
-body {
+/* This file is for your main application css. */
+html, body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#app, view{
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.content_general{
+  width: calc(100% - 400px);
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  padding: 30px 30px 30px 15px;
+
+}
+
+
+
+li{
+  list-style: none;
+}
+
+.top_navigation li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.navBar{
+  width: 400px;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  right: 0;
+  top: 0;
+  background: #f0f0f0;
+  border-left: 1px solid #d7d7d7;
+}
+
+.navBar ul{
+  padding-top: 30px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navBar ul li{
+  border-top: 1px solid #e4e4e4;
+  list-style: none;
+  padding:10px 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.content_general{
+  padding-top: 30px;
+}
+
+.panel-body button{
+  margin: 5px 0;
+}
+
+
+
+.contTokens{
+  width: 96%;
+  margin: 0 0 20px 0;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, .96);
+  border-radius: 4px;
+  padding: 10px 15px 70px 15px;
+}
+
+.contTokens .token{
+  display: inline-block;
+  padding: 8px 10px 10px 10px;
+  font-size: 14px;
+  background: #9b59b6;
+  color: #fff;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.contTokens .token a{
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  color: rgba(0, 0, 0, .4);
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none!important;
+}
+
+.contTokens .contImput{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.contTokens input{
+  width: 100%;
+  border: none;
+  height: 50px;
+  background: none;
+  font-size: 14px;
+  color: #777;
+  padding-left: 15px;
+  outline:0!important;
+  border-top: 1px solid #e0e0e0;
+}
+
+
+.contTokens .contImput ul.autocomplete{
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  left: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 0 0 5px 5px;
+  background: #f0f0f0;
+  z-index: 99;
+  padding: 0;
+  margin: 0;
+}
+
+.contTokens .contImput ul.autocomplete li{
+  border-top: 1px solid #e0e0e0;
+}
+
+.contTokens .contImput ul.autocomplete li:first-child{
+  border-top: none;
+}
+
+.contTokens .contImput ul.autocomplete li a{
+  display: block;;
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.contTokens .contImput ul.autocomplete li a:hover{
+  background: rgba(0, 0, 0, .05);
+  text-decoration: none;
+}
+
+
+.selected_book{
+  background: #feffd3;
+}
+
+input.h3_input{
+  width: 100%;
+  font-weight: 700;
+  font-size: 24px;
+  padding: 7px 10px;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  display: block;
+}
+
+input.p_input{
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 7px 10px;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  display: inline-block;
+}
+
+p.serie input{
+  width: auto;
+}
+
+.description_textarea{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  resize: none;
+  border: none;
 }

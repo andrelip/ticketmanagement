@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 20170617171043) do
 
   create_table "ticket_support_tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "profiles_customer_id"
-    t.string "name"
+    t.string "name", limit: 100
     t.text "message"
-    t.string "status"
+    t.string "status", limit: 30
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profiles_customer_id"], name: "index_ticket_support_tickets_on_profiles_customer_id"
+    t.index ["status"], name: "index_ticket_support_tickets_on_status"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

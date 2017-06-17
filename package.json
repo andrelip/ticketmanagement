@@ -8,6 +8,10 @@
     "jquery-ujs": "^1.2.2",
     "turbolinks": "^5.0.3",
 
+    "babel-plugin-module-alias": "^1.6.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-plugin-module-alias": "^1.6.0",
     "react": "^15.4.4",
     "react-apollo": "^1.2.0",
     "react-bootstrap": "^0.31.0",
@@ -16,7 +20,8 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "axios": "^0.15.3"
   },
   "devDependencies": {
     "babel": "^6.23.0",

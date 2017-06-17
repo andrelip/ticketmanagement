@@ -1,15 +1,8 @@
-class SpaController < ApplicationController
+class ApiController < ApplicationController
   protect_from_forgery with: :exception
-  helper_method :jwt_payload
+  helper_method :auth_token, :user_id_in_token?
 
   private
-
-  def jwt_payload
-    return nil unless current_user && current_user.id
-    {
-        auth_token: JsonWebToken.encode({user_id: current_user.id})
-    }
-  end
 
   def http_token
     @http_token ||= if request.headers['Authorization'].present?

@@ -24,11 +24,6 @@ module API
             error_response(message: "Internal server error", status: 500)
           end
         end
-
-        # HTTP header based authentication
-        # before do
-        #   error!('Unauthorized', 401) unless headers['Authorization'] == "some token"
-        # end
       end
     end
   end

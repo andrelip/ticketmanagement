@@ -4,6 +4,7 @@
   <title>Tickets Management</title>
   <%= csrf_meta_tags %>
 
+  <%= Gon::Base.render_data %>
   <%= stylesheet_link_tag "/assets/app.css" %>
   <%= javascript_include_tag "/assets/app.js" %>
   <script>require('frontend/js/app').init();</script>

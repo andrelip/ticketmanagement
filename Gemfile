@@ -64,5 +64,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-# for native javacript assets management
+# Native javacript front-end management
 gem 'breakfast'
+
+# JSON Web Token
+gem 'jwt'
+gem 'gon'

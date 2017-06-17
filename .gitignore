@@ -17,3 +17,8 @@
 /yarn-error.log
 
 .byebug_history
+# Added by Breakfast Gem
+yarn-error.log
+npm-debug.log
+node_modules/*
+public/assets/*

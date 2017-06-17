@@ -23,8 +23,8 @@ class App extends Component {
         <Router>
           <div>
             <ul className="top_navigation">
-              <li><Link to="/ticket/panel">Global</Link></li>
-              <li><Link to="/ticket/panel/tickets">Comentários</Link></li>
+              <li><Link to="/ticket_panel">Global</Link></li>
+              <li><Link to="/ticket_panel/closed">Comentários</Link></li>
             </ul>
 
             <hr/>
@@ -42,27 +42,15 @@ class App extends Component {
 const GlobalSearchView = ({match}) => {
   let url;
   let showBar = true;
-  console.log(match.url);
   switch(match.url) {
-    case "/ticket/panel":
-      url = "/api/v1/models/annotations";
+    case "/ticket_panel":
+      url = "/api/v1/tickets";
       break;
-    case "/ticket/panel/comentarios":
-      url = "/api/v1/models/annotations?only_annotations=true";
-      break;
-    case "/ticket/panel/livros":
-      url = "/api/v1/models/annotations?only_books=true";
-      break;
-    case "/ticket/panel/livros_pendentes":
-      url = "/api/v1/books";
-      showBar = false;
-      break;
-    case "/ticket/panel/livros_conferidos":
-      showBar = false;
-      url = "/api/v1/books?only_verified=true";
+    case "/ticket_panel/closed":
+      url = "/api/v1/tickets";
       break;
     default:
-      url = "/api/v1/books";
+      url = "/api/v1/tickets";
   }
 
   return (

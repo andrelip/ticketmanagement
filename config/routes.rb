@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'ticket_panel/index'
+  get 'ticket_panel' => 'ticket_panel#index'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

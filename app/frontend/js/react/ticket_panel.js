@@ -4,6 +4,7 @@ import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import ReactDOM from "react-dom";
 import ListItems from "./components/list_items";
+import TicketForm from "./components/ticket_form";
 import reducers from './reducers';
 import {
   BrowserRouter as Router,
@@ -24,14 +25,15 @@ class App extends Component {
         <Router>
           <div>
             <ul className="top_navigation">
-              <li><Link to="/ticket_panel/opened_tickets">Opened Tickets</Link></li>
-              <li><Link to="/ticket_panel/closed">Closed Tickets</Link></li>
-              <li><Link to="/ticket_panel/new_ticket">New Ticket</Link></li>
+              <li><Link to="/ticket_panel/list/opened_tickets">Opened Tickets</Link></li>
+              <li><Link to="/ticket_panel/list/closed">Closed Tickets</Link></li>
+              <li><Link to="/ticket_panel/new/new_ticket">New Ticket</Link></li>
             </ul>
 
             <hr/>
             <switch>
-              <Route path="/ticket_panel/:scope" component={ ListItemsView }/>
+              <Route path="/ticket_panel/list/:scope" component={ ListItemsView }/>
+              <Route path="/ticket_panel/new/:scope" component={ TicketForm }/>
             </switch>
           </div>
         </Router>
@@ -46,11 +48,11 @@ const ListItemsView = ({match}) => {
   let showBar = true;
   console.log(match.url)
   switch(match.url) {
-    case "/ticket_panel/opened_tickets":
+    case "/ticket_panel/list/opened_tickets":
       url = "/api/v1/list?status=open";
       resource_type = 'ticket';
       break;
-    case "/ticket_panel/closed":
+    case "/ticket_panel/list/closed":
       url = "/api/v1/list?status=closed";
       resource_type = 'ticket';
       break;

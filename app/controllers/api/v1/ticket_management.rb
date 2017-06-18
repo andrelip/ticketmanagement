@@ -52,8 +52,10 @@ module API
       resource :list do
         desc "Create a ticket"
         get do
-          tickets = TicketSupport.customer_tickets customer.id, params
           count = TicketSupport.customer_tickets customer.id, params.merge(count: true)
+          tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
+          tickets = tickets.map{ |t| { id: t.id, name: t.name, message: t.message,
+                                       status: t.status, user_name: t.customer.user.name} }
           { data: tickets, count: count }
         end
       end

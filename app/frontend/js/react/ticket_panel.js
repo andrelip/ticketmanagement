@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import ReactDOM from "react-dom";
+import ListItems from "./components/list_items";
 import reducers from './reducers';
 import {
   BrowserRouter as Router,
@@ -30,8 +31,7 @@ class App extends Component {
 
             <hr/>
             <switch>
-              <Route exact path="/ticket/panel" component={ GlobalSearchView }/>
-              <Route path="/ticket/panel/:scope" component={ GlobalSearchView }/>
+              <Route path="/ticket_panel/:scope" component={ ListItemsView }/>
             </switch>
           </div>
         </Router>
@@ -40,11 +40,12 @@ class App extends Component {
   }
 }
 
-const GlobalSearchView = ({match}) => {
+const ListItemsView = ({match}) => {
   let url;
   let showBar = true;
+  console.log(match.url)
   switch(match.url) {
-    case "/ticket_panel":
+    case "/ticket_panel/opened_tickets":
       url = "/api/v1/tickets";
       break;
     case "/ticket_panel/closed":
@@ -57,13 +58,7 @@ const GlobalSearchView = ({match}) => {
   return (
     <div>
       <div className="content_general">
-        <GlobalSearch searchUrl={ url } key={ url } showBar={ showBar } />
-      </div>
-
-      <div className="navBar">
-        <ul className="baseNav">
-          <BookDescription />
-        </ul>
+        <ListItems searchUrl={ url } key={ url } showBar={ showBar } />
       </div>
     </div>)
 };

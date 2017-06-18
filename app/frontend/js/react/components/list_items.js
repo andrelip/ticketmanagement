@@ -23,7 +23,7 @@ class ListItems extends Component {
   render() {
     const responseItems = () => {
       const { resource_type, search_items } = this.props;
-      console.log(search_items)
+      console.log(search_items);
       return _.map(search_items, (item, index) => {
           return <ItemSelectFormater item={item} key={ resource_type + item.id } resource_type={ resource_type } />
         }

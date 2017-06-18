@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a465c17-9736-47dc-9758-d11092c65620" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/frontend/js/react/reducers/tickets_reducer.js" afterPath="$PROJECT_DIR$/app/frontend/js/react/reducers/tickets_reducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticket_support.rb" afterPath="$PROJECT_DIR$/app/models/ticket_support.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/frontend/js/react/components/list_items.js" afterPath="$PROJECT_DIR$/app/frontend/js/react/components/list_items.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/frontend/js/react/components/pagination.js" afterPath="$PROJECT_DIR$/app/frontend/js/react/components/pagination.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -20,11 +21,43 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tickets_reducer.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/frontend/js/react/reducers/tickets_reducer.js">
+      <file leaf-file-name="ticket_item.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/ticket_item.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="110" lean-forward="false" selection-start-line="20" selection-start-column="110" selection-end-line="20" selection-end-column="110" />
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_items.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/list_items.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_input.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/search_input.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagination.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/pagination.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -50,6 +83,7 @@
       <find>Notific</find>
       <find>edited_message</find>
       <find>description</find>
+      <find>count</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,14 +123,12 @@
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/item_format_selector.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/notify_panel.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/reducers/notify_reducer.js" />
-        <option value="$PROJECT_DIR$/app/frontend/js/react/components/pagination.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/ticket.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/item_select_formater.js" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/ticket_support/ticket.rb" />
         <option value="$PROJECT_DIR$/config/initializers/will_paginate.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/ticket_management.rb" />
-        <option value="$PROJECT_DIR$/app/frontend/js/react/components/list_items.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/actions/api_navigation.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/reducers/selectTicketReducer.js" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/actions/ticket.js" />
@@ -109,6 +141,8 @@
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/ticket_item.js" />
         <option value="$PROJECT_DIR$/app/models/ticket_support.rb" />
         <option value="$PROJECT_DIR$/app/frontend/js/react/reducers/tickets_reducer.js" />
+        <option value="$PROJECT_DIR$/app/frontend/js/react/components/list_items.js" />
+        <option value="$PROJECT_DIR$/app/frontend/js/react/components/pagination.js" />
       </list>
     </option>
   </component>
@@ -293,6 +327,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="reducers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="andrestephano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="andrestephano" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -651,7 +715,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32588000" />
+    <option name="totallyTimeSpent" value="33207000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="24" width="1680" height="979" extended-state="6" />
@@ -963,17 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/pagination.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-          <caret line="32" column="72" lean-forward="false" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/ticket.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1034,14 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/search_input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="41" lean-forward="false" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/ticket_form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="517">
@@ -1058,16 +1103,6 @@
           <caret line="41" column="3" lean-forward="true" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/list_items.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1096,16 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/ticket_item.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="102" lean-forward="false" selection-start-line="46" selection-start-column="102" selection-end-line="46" selection-end-column="102" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/ticket_support/ticket.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1126,6 +1151,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="110" lean-forward="false" selection-start-line="20" selection-start-column="110" selection-end-line="20" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/ticket_item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/search_input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/list_items.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/js/react/components/pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding />
         </state>
       </provider>

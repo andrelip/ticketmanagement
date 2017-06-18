@@ -13,19 +13,29 @@ class PaginationBasic extends Component {
     const { current_page, pages, count } = this.props
     return (
       <div>
-        <Pagination
-          bsSize="medium"
-          prev
-          next
-          first
-          last
-          items={ pages }
-          activePage={ current_page }
-          maxButtons={10}
-          onSelect={ this.handlePageChange.bind(this) } />
-        <div>{ this.props.count }</div>
+        { this.renderCount(count, current_page, pages) }
       </div>
     );
+  }
+
+  renderCount(count, current_page, pages) {
+    if (count > 0) {
+      return (<div>
+                <Pagination
+                  bsSize="medium"
+                  prev
+                  next
+                  first
+                  last
+                  items={ pages }
+                  activePage={ current_page }
+                  maxButtons={10}
+                  onSelect={ this.handlePageChange.bind(this) } />
+               <p>{ count }</p>
+              </div>)
+    } else {
+      return <p>No items to show.</p>
+    }
   }
 }
 

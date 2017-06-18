@@ -7,9 +7,9 @@ export const changePage = (api_url, page_number, per_page, options = {}) => {
   return (dispatch) => {
     axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
     axios.get(api_url, {
-      params: {page: start,
-        per_page: per_page,
-        query_string: query_string}
+      params: { page: start,
+                per_page: per_page,
+                query_string: query_string }
     })
       .then(function (response) {
         const { data, count } = response.data;

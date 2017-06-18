@@ -28,6 +28,7 @@ module TicketSupport
     per_page = options[:per_page] || 10
     query = Ticket.where(profiles_customer_id: customer_id)
     query = query.where(status: options[:status]) if options[:status]
+    query = query.where(id: options[:query_string]) if options[:query_string]
     return query.count if options[:count]
     query.paginate({page: page, per_page: per_page})
   end

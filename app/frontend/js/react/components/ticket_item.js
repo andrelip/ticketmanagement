@@ -41,7 +41,6 @@ class Ticket extends Component {
   }
 
   renderButton(status) {
-    console.log(status)
     if (status == "open") {
       return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >Mark as completed</Button>
     } else {

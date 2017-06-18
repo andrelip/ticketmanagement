@@ -10,7 +10,6 @@ import ItemSelectFormater from './item_select_formater'
 
 class ListItems extends Component {
   componentDidMount() {
-    console.log("did mount");
     this.props.changePage(this.props.searchUrl, 1, this.props.per_page);
   }
 
@@ -23,7 +22,6 @@ class ListItems extends Component {
   render() {
     const responseItems = () => {
       const { resource_type, search_items } = this.props;
-      console.log(search_items);
       return _.map(search_items, (item, index) => {
           return <ItemSelectFormater item={item} key={ resource_type + item.id } resource_type={ resource_type } />
         }
@@ -46,7 +44,6 @@ class ListItems extends Component {
 }
 
 const mapStateToProps = ({ ticketsReducer }) => {
-  console.log(ticketsReducer);
   const { current_page, per_page, query_string, search_items } = ticketsReducer;
   return { current_page, per_page, query_string, search_items };
 };

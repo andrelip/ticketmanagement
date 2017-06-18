@@ -6,8 +6,10 @@ class SpaController < ApplicationController
 
   def jwt_payload
     return nil unless current_user && current_user.id
+    staff_permission = Profiles::Staff.where(id: current_user.id).present?
     {
-        auth_token: JsonWebToken.encode({user_id: current_user.id})
+        auth_token: JsonWebToken.encode({ user_id: current_user.id }),
+        is_staff: staff_permission
     }
   end
 

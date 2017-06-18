@@ -11,7 +11,7 @@ class SearchInput extends Component {
         type="text"
         onChange={ this.handleQueryInputChange.bind(this) }
         className={"form-control search-input"}
-        placeholder="Search for ticket" />
+        placeholder="Search for ticket ID" />
     )
   }
 

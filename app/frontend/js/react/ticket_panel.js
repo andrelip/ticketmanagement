@@ -46,7 +46,6 @@ const ListItemsView = ({match}) => {
   let url;
   let resource_type;
   let showBar = true;
-  console.log(match.url)
   switch(match.url) {
     case "/ticket_panel/list/opened_tickets":
       url = "/api/v1/list?status=open";

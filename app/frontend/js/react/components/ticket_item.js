@@ -18,7 +18,7 @@ class Ticket extends Component {
           </Col>
 
           <Col xs={2}>
-            <Button bsStyle="info" className="button" >Change to completed</Button>
+            { this.renderButton(status) }
           </Col>
         </Row>
       </Panel>
@@ -30,6 +30,15 @@ class Ticket extends Component {
       return "book selected_book"
     } else {
       return "book"
+    }
+  }
+
+  renderButton(status) {
+    console.log(status)
+    if (status == "open") {
+      return <Button bsStyle="success" className="button" >Mark as completed</Button>
+    } else {
+      return <Button bsStyle="warning" className="button" >Reopen</Button>
     }
   }
 }

@@ -38,6 +38,10 @@ module API
           def customer
             @customer ||= Profiles.get_customer(current_user.id)
           end
+
+          def staff
+            @customer ||= Profiles.get_staff(current_user.id)
+          end
         end
       end
     end

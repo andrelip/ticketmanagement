@@ -52,10 +52,15 @@ module API
       resource :list do
         desc "Create a ticket"
         get do
-          count = TicketSupport.customer_tickets customer.id, params.merge(count: true)
-          tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
+          if params[:staff] && staff
+            count = TicketSupport.all_tickets(params.merge(count: true))
+            tickets = TicketSupport.all_tickets(params).includes({customer: :user})
+          else
+            count = TicketSupport.customer_tickets customer.id, params.merge(count: true)
+            tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
+          end
           tickets = tickets.map{ |t| { id: t.id, name: t.name, message: t.message,
-                                       status: t.status, user_name: t.customer.user.name} }
+                                       status: t.status, user_name: t.customer.user.name } }
           { data: tickets, count: count }
         end
       end
@@ -66,7 +71,11 @@ module API
           requires :ticket_id, type: String, desc: "Ticket ID"
         end
         patch do
-          ticket = TicketSupport.get_ticket_for_customer customer.id, params[:ticket_id]
+          if params[:staff] && staff
+            ticket = TicketSupport.get_ticket params[:ticket_id]
+          else
+            ticket = TicketSupport.get_ticket_for_customer customer.id, params[:ticket_id]
+          end
           ticket = TicketSupport.update_ticket ticket, params
           if ticket[:status] == :ok
             { data: ticket[:data] }

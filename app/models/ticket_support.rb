@@ -23,10 +23,26 @@ module TicketSupport
     ticket && (ticket.profiles_customer_id == customer_id ? ticket : false)
   end
 
+  def self.get_ticket(ticket_id)
+    # Performing a get by id and filtering on ruby has more performance
+    # than filtering in database.
+    Ticket.find ticket_id
+  end
+
   def self.customer_tickets(customer_id, options = {})
     page = options[:page] || 1
     per_page = options[:per_page] || 10
     query = Ticket.where(profiles_customer_id: customer_id)
+    query = query.where(status: options[:status]) if options[:status]
+    query = query.where(id: options[:query_string]) if options[:query_string]
+    return query.count if options[:count]
+    query.order(updated_at: :desc).paginate({page: page, per_page: per_page})
+  end
+
+  def self.all_tickets(options = {})
+    page = options[:page] || 1
+    per_page = options[:per_page] || 10
+    query = Ticket.all
     query = query.where(status: options[:status]) if options[:status]
     query = query.where(id: options[:query_string]) if options[:query_string]
     return query.count if options[:count]

@@ -25,7 +25,7 @@ class App extends Component {
         <Router>
           <div>
             <ul className="top_navigation">
-              <li><Link to="/ticket_panel/list/opened_tickets">Opened Tickets</Link></li>
+              <li><Link to="/ticket_panel/list/open_tickets">Open Tickets</Link></li>
               <li><Link to="/ticket_panel/list/closed">Closed Tickets</Link></li>
               <li><Link to="/ticket_panel/new/new_ticket">New Ticket</Link></li>
               <li><a confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a></li>
@@ -33,6 +33,7 @@ class App extends Component {
 
             <hr/>
             <switch>
+              <Route exact path="/" component={ ListItemsView }/>
               <Route path="/ticket_panel/list/:scope" component={ ListItemsView }/>
               <Route path="/ticket_panel/new/:scope" component={ TicketForm }/>
             </switch>
@@ -48,7 +49,7 @@ const ListItemsView = ({match}) => {
   let resource_type;
   let showBar = true;
   switch(match.url) {
-    case "/ticket_panel/list/opened_tickets":
+    case "/ticket_panel/list/open_tickets":
       url = "/api/v1/list?status=open";
       resource_type = 'ticket';
       break;
@@ -57,7 +58,7 @@ const ListItemsView = ({match}) => {
       resource_type = 'ticket';
       break;
     default:
-      url = "/api/v1/list";
+      url = "/api/v1/list?status=open";
       resource_type = 'ticket';
   }
 

@@ -18,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
         count: count,
         query_string: query_string};
     case 'item_deleted':
-      return { ...state, search_items: state.search_items.filter(item => item.id !== action.payload) };
+      return { ...state, search_items: state.search_items.filter(item => item.id !== action.payload), count: (state.count - 1) };
     default:
       return state;
   }

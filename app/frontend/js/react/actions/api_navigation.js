@@ -5,6 +5,7 @@ export const changePage = (api_url, page_number, per_page, options = {}) => {
   const start = page_number - 1;
   const query_string = options.query_string || null;
   return (dispatch) => {
+    axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
     axios.get(api_url, {
       params: {page: start,
         per_page: per_page,

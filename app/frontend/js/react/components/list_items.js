@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { _ } from 'lodash';
 import SearchInput from './search_input';
 import NotifyPanel from './notify_panel';
+import ItemSelectFormater from './item_select_formater'
 
 class ListItems extends Component {
   componentDidMount() {
@@ -21,8 +22,10 @@ class ListItems extends Component {
 
   render() {
     const responseItems = () => {
-      return _.map(this.props.search_items, (item, index) => {
-          return <ItemFormatSelector item={item} key={ item.type + item.id } />
+      const { resource_type, search_items } = this.props;
+      console.log(search_items)
+      return _.map(search_items, (item, index) => {
+          return <ItemSelectFormater item={item} key={ resource_type + item.id } resource_type={ resource_type } />
         }
       );
     };

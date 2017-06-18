@@ -42,23 +42,27 @@ class App extends Component {
 
 const ListItemsView = ({match}) => {
   let url;
+  let resource_type;
   let showBar = true;
   console.log(match.url)
   switch(match.url) {
     case "/ticket_panel/opened_tickets":
-      url = "/api/v1/tickets";
+      url = "/api/v1/list";
+      resource_type = 'ticket';
       break;
     case "/ticket_panel/closed":
-      url = "/api/v1/tickets";
+      url = "/api/v1/list";
+      resource_type = 'ticket';
       break;
     default:
-      url = "/api/v1/tickets";
+      url = "/api/v1/list";
+      resource_type = 'ticket';
   }
 
   return (
     <div>
       <div className="content_general">
-        <ListItems searchUrl={ url } key={ url } showBar={ showBar } />
+        <ListItems searchUrl={ url } key={ url } resource_type={ resource_type } showBar={ showBar } />
       </div>
     </div>)
 };

@@ -11,11 +11,12 @@ class Ticket extends Component {
       <Panel className={ this.renderClassName(status) }>
         <Row>
 
-          <Col xs={10}>
+          <Col xs={9}>
             <h3> { name} </h3>
 
             <p>{ message }</p>
             <p><Label>{ id }</Label> { user_name } { `<${user_email}>`} </p>
+
           </Col>
 
           <Col xs={2}>
@@ -41,7 +42,7 @@ class Ticket extends Component {
 
   renderButton(status) {
     if (status == "open") {
-      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >Mark as completed</Button>
+      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >✓ OK</Button>
     } else {
       return <Button bsStyle="warning" className="button" onClick={ this.handleButton.bind(this, 'open')} >Reopen</Button>
     }

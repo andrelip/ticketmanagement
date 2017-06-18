@@ -53,7 +53,7 @@ module API
         desc "Create a ticket"
         get do
           tickets = TicketSupport.customer_tickets customer.id, params
-          count = TicketSupport.customer_tickets customer.id, count: true
+          count = TicketSupport.customer_tickets customer.id, params.merge(count: true)
           { data: tickets, count: count }
         end
       end

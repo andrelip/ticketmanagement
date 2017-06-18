@@ -24,11 +24,12 @@ module TicketSupport
   end
 
   def self.customer_tickets(customer_id, options = {})
+    page = options[:page] || 1
+    per_page = options[:per_page] || 10
     query = Ticket.where(profiles_customer_id: customer_id)
+    query = query.where(status: options[:status]) if options[:status]
     return query.count if options[:count]
-    options[:page] = options[:page] || 1
-    options[:per_page] = options[:per_page] || 3
-    query.paginate(options)
+    query.paginate({page: page, per_page: per_page})
   end
 
   def self.update_ticket(ticket, params)

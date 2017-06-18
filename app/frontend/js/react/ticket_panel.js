@@ -25,7 +25,7 @@ class App extends Component {
           <div>
             <ul className="top_navigation">
               <li><Link to="/ticket_panel/opened_tickets">Opened Tickets</Link></li>
-              <li><Link to="/ticket_panel/closed">Tickets</Link></li>
+              <li><Link to="/ticket_panel/closed">Closed Tickets</Link></li>
               <li><Link to="/ticket_panel/new_ticket">New Ticket</Link></li>
             </ul>
 
@@ -47,11 +47,11 @@ const ListItemsView = ({match}) => {
   console.log(match.url)
   switch(match.url) {
     case "/ticket_panel/opened_tickets":
-      url = "/api/v1/list";
+      url = "/api/v1/list?status=open";
       resource_type = 'ticket';
       break;
     case "/ticket_panel/closed":
-      url = "/api/v1/list";
+      url = "/api/v1/list?status=closed";
       resource_type = 'ticket';
       break;
     default:

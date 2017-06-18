@@ -33,7 +33,6 @@ class ListItems extends Component {
     return (
       <div className="global-search">
         { this.renderSearchInput() }
-        < NotifyPanel />
         {<PaginationBasic searchUrl={this.props.searchUrl}/>}
         {/*<Route path="/" render={ () => <li>{responseItems()}</li> }/>*/}
         <li>{ responseItems() }</li>

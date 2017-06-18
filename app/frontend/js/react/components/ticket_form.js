@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Panel, Button, Col, Row, FormControl } from 'react-bootstrap'
 import { connect } from 'react-redux';
-import { onChangeField } from '../actions/form_ticket'
+import { onChangeField, createTicket } from '../actions/form_ticket'
 import _ from 'lodash'
 
 class TicketForm extends Component {
@@ -12,7 +12,7 @@ class TicketForm extends Component {
     const message = "oi"
     const status = "open"
     const id = 13
-    const { edited_name, edited_description } = this.props;
+    const { edited_name, edited_message } = this.props;
 
     return (
       <Panel className={ this.renderClassName(status) }>
@@ -22,17 +22,17 @@ class TicketForm extends Component {
             <h3> New Ticket </h3>
 
             <p>
-                name
-                <input className="h3_input" value={ edited_name } onChange={ this.handleChange.bind(this, 'name') } />
+                <input className="h3_input" value={ edited_name } placeholder={"Subject"} onChange={ this.handleChange.bind(this, 'name') } />
             </p>
             <p>
-                Description
-              <FormControl value={edited_description} componentClass="textarea" placeholder="textarea" rows="8" />
+              <FormControl value={ edited_message } onChange={ this.handleChange.bind(this, 'message')} componentClass="textarea" placeholder="Complete description" rows="8" />
+            </p>
+            <p>
+              { this.renderButton() }
             </p>
           </Col>
 
           <Col xs={2}>
-            <Button bsStyle="success" className="button" >Create</Button>
           </Col>
         </Row>
       </Panel>
@@ -51,10 +51,29 @@ class TicketForm extends Component {
       return "book"
     }
   }
+
+  renderButton() {
+    const { edited_name, edited_message } = this.props;
+    const name = edited_name || "";
+    const message = edited_message || "";
+    if (name.length < 6 && message.length < 20) {
+      return <span> Name or description too short </span>
+    } else if (name.length > 100 || message.length > 30000) {
+      return <span> Name or description too big </span>
+    } else {
+      return <Button bsStyle="success" className="button" onClick={ this.createTicket.bind(this) } >Create</Button>
+    }
+  }
+
+  createTicket() {
+    const { createTicket } = this.props;
+    const { edited_name, edited_message } = this.props;
+    createTicket(edited_name, edited_message)
+  }
 }
 
 const mapStateToProps = ({ formTicketReducer }) => {
   return formTicketReducer;
 };
 
-export default connect(mapStateToProps, { onChangeField })(TicketForm);
+export default connect(mapStateToProps, { onChangeField, createTicket })(TicketForm);

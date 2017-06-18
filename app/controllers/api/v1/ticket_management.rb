@@ -23,7 +23,7 @@ module API
           requires :message, type: String, desc: "Full message of the problem"
         end
         post do
-          ticket = TicketSupport.register_ticket customer.id, params[:name], params[:message]
+          ticket = TicketSupport.register_ticket(customer.id, params[:name], params[:message])
           if ticket[:status] == :ok
             { data: ticket[:data] }
           else
@@ -56,7 +56,7 @@ module API
             count = TicketSupport.all_tickets(params.merge(count: true))
             tickets = TicketSupport.all_tickets(params).includes({customer: :user})
           else
-            count = TicketSupport.customer_tickets customer.id, params.merge(count: true)
+            count = TicketSupport.customer_tickets(customer.id, params.merge(count: true))
             tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
           end
           tickets = tickets.map{ |t| { id: t.id, name: t.name, message: t.message,
@@ -74,7 +74,7 @@ module API
           if params[:staff] && staff
             ticket = TicketSupport.get_ticket params[:ticket_id]
           else
-            ticket = TicketSupport.get_ticket_for_customer customer.id, params[:ticket_id]
+            ticket = TicketSupport.get_ticket_for_customer(customer.id, params[:ticket_id])
           end
           ticket = TicketSupport.update_ticket ticket, params
           if ticket[:status] == :ok

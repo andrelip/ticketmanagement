@@ -56,7 +56,7 @@ class TicketForm extends Component {
     const { edited_name, edited_message } = this.props;
     const name = edited_name || "";
     const message = edited_message || "";
-    if (name.length < 6 && message.length < 20) {
+    if (name.length < 6 || message.length < 20) {
       return <span> Name or description too short </span>
     } else if (name.length > 100 || message.length > 30000) {
       return <span> Name or description too big </span>
@@ -68,7 +68,7 @@ class TicketForm extends Component {
   createTicket() {
     const { createTicket } = this.props;
     const { edited_name, edited_message } = this.props;
-    createTicket(edited_name, edited_message)
+    createTicket({name: edited_name, message: edited_message});
   }
 }
 

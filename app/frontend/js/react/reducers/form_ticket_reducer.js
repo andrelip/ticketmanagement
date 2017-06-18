@@ -6,6 +6,8 @@ export default (state = INITIAL_STATE, action) => {
       const { field, value } = action.payload;
       const new_state =  { ...state, ["edited_" + field]: value};
       return new_state;
+    case 'clean_ticket_form':
+      return INITIAL_STATE;
     default:
       return state;
   }

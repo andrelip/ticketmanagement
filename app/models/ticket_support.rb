@@ -30,7 +30,7 @@ module TicketSupport
     query = query.where(status: options[:status]) if options[:status]
     query = query.where(id: options[:query_string]) if options[:query_string]
     return query.count if options[:count]
-    query.paginate({page: page, per_page: per_page})
+    query.order(created_at: :desc).paginate({page: page, per_page: per_page})
   end
 
   def self.update_ticket(ticket, params)

@@ -6,13 +6,11 @@ export const onChangeField = (field, value) => {
 
 export const createTicket = (create_params) => {
   return (dispatch) => {
-    axios.post('/api/v1/create', {
-      ticket: create_params
-    })
+    axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
+    axios.post('/api/v1/create', create_params)
    .then(function (response) {
      const { data } = response.data;
-     dispatch({ type: 'select_book', payload: '' });
-     dispatch({ type: 'books_changed', payload: {slug: slug, data: data} });
+     dispatch({ type: 'clean_ticket_form', payload: null });
      dispatch({type: 'new_notification_message', payload: `${slug} atualizado`})
    })
    .catch(function (error) {

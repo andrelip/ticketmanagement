@@ -18,3 +18,17 @@ export const createTicket = (create_params) => {
    });
   };
 };
+
+export const changeStatus = (ticketId, status) => {
+  return (dispatch) => {
+    axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
+    axios.patch('/api/v1/update', {ticket_id: ticketId, status: status})
+   .then(function (response) {
+     const { data } = response.data;
+     dispatch({ type: 'item_deleted', payload: ticketId });
+   })
+   .catch(function (error) {
+     console.log(error);
+   });
+  };
+};

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Panel, Button, Col, Row, Image, Label } from 'react-bootstrap'
 import { connect } from 'react-redux';
+import { changeStatus } from '../actions/form_ticket';
 import _ from 'lodash'
 
 class Ticket extends Component {
@@ -33,14 +34,19 @@ class Ticket extends Component {
     }
   }
 
+  handleButton(new_status) {
+    const { changeStatus, item } = this.props;
+    changeStatus(item.id, new_status)
+  }
+
   renderButton(status) {
     console.log(status)
     if (status == "open") {
-      return <Button bsStyle="success" className="button" >Mark as completed</Button>
+      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >Mark as completed</Button>
     } else {
-      return <Button bsStyle="warning" className="button" >Reopen</Button>
+      return <Button bsStyle="warning" className="button" onClick={ this.handleButton.bind(this, 'open')} >Reopen</Button>
     }
   }
 }
 
-export default connect(null, {})(Ticket);
+export default connect(null, { changeStatus })(Ticket);

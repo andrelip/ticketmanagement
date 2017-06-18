@@ -52,8 +52,9 @@ module API
       resource :list do
         desc "Create a ticket"
         get do
-          tickets = TicketSupport.customer_tickets customer.id
-          { data: tickets }
+          tickets = TicketSupport.customer_tickets customer.id, params
+          count = TicketSupport.customer_tickets customer.id, count: true
+          { data: tickets, count: count }
         end
       end
 

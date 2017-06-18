@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 class Ticket extends Component {
   render() {
-    const { name, message, status, id, user_name } = this.props.item;
+    const { name, message, status, id, user_name, user_email } = this.props.item;
     return (
       <Panel className={ this.renderClassName(status) }>
         <Row>
@@ -15,8 +15,7 @@ class Ticket extends Component {
             <h3> { name} </h3>
 
             <p>{ message }</p>
-            <p>TickedID: { id }</p>
-            <p>Name: { user_name }</p>
+            <p><Label>{ id }</Label> { user_name } { `<${user_email}>`} </p>
           </Col>
 
           <Col xs={2}>

@@ -28,6 +28,7 @@ class App extends Component {
               <li><Link to="/ticket_panel/list/opened_tickets">Opened Tickets</Link></li>
               <li><Link to="/ticket_panel/list/closed">Closed Tickets</Link></li>
               <li><Link to="/ticket_panel/new/new_ticket">New Ticket</Link></li>
+              <li><a confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a></li>
             </ul>
 
             <hr/>

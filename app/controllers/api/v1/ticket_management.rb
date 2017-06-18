@@ -60,7 +60,7 @@ module API
             tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
           end
           tickets = tickets.map{ |t| { id: t.id, name: t.name, message: t.message,
-                                       status: t.status, user_name: t.customer.user.name } }
+                                       status: t.status, user_name: t.customer.user.name , user_email: t.customer.user.email } }
           { data: tickets, count: count }
         end
       end
@@ -76,7 +76,7 @@ module API
           else
             ticket = TicketSupport.get_ticket_for_customer(customer.id, params[:ticket_id])
           end
-          ticket = TicketSupport.update_ticket ticket, params
+            ticket = TicketSupport.update_ticket ticket, params
           if ticket[:status] == :ok
             { data: ticket[:data] }
           else

@@ -13,7 +13,7 @@ RSpec.describe TicketPanelController, type: :controller do
 
     context "signed in" do
 
-      it "returns have gon" do
+      it "returns gon with jwt" do
         @user = User.new
         @user.save(validate: false)
         sign_in @user

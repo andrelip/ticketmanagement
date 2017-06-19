@@ -8,4 +8,19 @@ class TicketPanelController < SpaController
       redirect_to new_user_session_path
     end
   end
+
+  def get_last
+    total_entries = params[:total_entries] || 100
+    months_ago = params[:months_ago] || 1
+    staff = Profiles.get_staff current_user
+    if staff
+      @tickets = TicketSupport.all_tickets(per_page: 100, status: :closed).where("created_at > ?", Date.today - months_ago.month)
+      respond_to do |format|
+        format.pdf do
+          pdf = ::ReportPdf.new(@tickets, total_entries, months_ago)
+          send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+        end
+      end
+    end
+  end
 end

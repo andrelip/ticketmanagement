@@ -74,3 +74,6 @@ gem 'grape'
 gem 'grape_logging'
 
 gem 'will_paginate'
+
+gem 'prawn'
+gem 'prawn-table'

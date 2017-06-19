@@ -27,7 +27,8 @@ module Profiles
   def self.list_users(options = {})
     page = options[:page] || 1
     per_page = options[:per_page] || 10
-    query = User.all.order(updated_at: :desc)
+    query = User.order(updated_at: :desc)
+    query = query.where("email LIKE ?", "%#{options[:query_string]}%") if options[:query_string]
     return query.count if options[:count]
     query = query.paginate({page: page, per_page: per_page})
     if options[:with_kind]

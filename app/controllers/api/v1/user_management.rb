@@ -36,7 +36,7 @@ module API
               users = users.map{ |user| { id: user.id, name: user.name,
                                           user_email: user.email,
                                           created_at: user.created_at,
-                                          message: user.user_kind } }
+                                          status: user.user_kind } }
               { data: users, count: count }
             else
               status 405

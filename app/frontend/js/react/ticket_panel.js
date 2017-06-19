@@ -68,7 +68,7 @@ const ListItemsView = ({match}) => {
       break;
     case "/user_panel/list":
       url = "/api/v1/users/list";
-      resource_type = 'ticket';
+      resource_type = 'user';
       break;
     default:
       url = "/api/v1/tickets/list?status=open";

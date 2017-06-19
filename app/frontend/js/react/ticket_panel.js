@@ -44,6 +44,7 @@ class App extends Component {
               <Route exact path="/" component={ ListItemsView }/>
               <Route path="/ticket_panel/list/:scope" component={ ListItemsView }/>
               <Route path="/ticket_panel/new/:scope" component={ TicketForm }/>
+              <Route path="/user_panel/:scope" component={ ListItemsView }/>
             </switch>
           </div>
         </Router>
@@ -63,6 +64,10 @@ const ListItemsView = ({match}) => {
       break;
     case "/ticket_panel/list/closed":
       url = "/api/v1/tickets/list?status=closed";
+      resource_type = 'ticket';
+      break;
+    case "/user_panel/list":
+      url = "/api/v1/users/list";
       resource_type = 'ticket';
       break;
     default:

@@ -1,6 +1,6 @@
 module API
   module V1
-    class TicketManagement < Grape::API
+    class UserManagement < Grape::API
       include V1::Defaults
       include V1::RequireCustomer
       include Rails.application.routes.url_helpers
@@ -8,7 +8,7 @@ module API
       use GrapeLogging::Middleware::RequestLogger,
           logger: logger,
           log_level: 'debug'
-      namespace :tickets do
+      namespace :users do
 
         resource :create do
           desc "Create a ticket"
@@ -30,16 +30,18 @@ module API
         resource :list do
           desc "Create a user"
           get do
-            if params[:staff] && staff
-              count = TicketSupport.all_tickets(params.merge(count: true))
-              tickets = TicketSupport.all_tickets(params).includes({customer: :user})
+            if staff
+              count = Profiles.list_users(params.merge(count: true))
+              users = Profiles.list_users(params.merge(with_kind: true))
+              users = users.map{ |user| { id: user.id, name: user.name,
+                                          user_email: user.email,
+                                          created_at: user.created_at,
+                                          message: user.user_kind } }
+              { data: users, count: count }
             else
-              count = TicketSupport.customer_tickets(customer.id, params.merge(count: true))
-              tickets = TicketSupport.customer_tickets(customer.id, params).includes({customer: :user})
+              status 405
+              { error: 'not allowed' }
             end
-            tickets = tickets.map{ |t| { id: t.id, name: t.name, message: t.message,
-                                         status: t.status, user_name: t.customer.user.name , user_email: t.customer.user.email } }
-            { data: tickets, count: count }
           end
         end
 

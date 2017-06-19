@@ -13,8 +13,12 @@ module Profiles
   end
 
   def self.list_users(options = {})
+    page = options[:page] || 1
+    per_page = options[:per_page] || 10
+    query = User.all
+    return query.count if options[:count]
+    query = query.paginate({page: page, per_page: per_page})
     if options[:with_kind]
-      query = User.all
       user_ids = query.ids
       staffs_ids = Profiles::Staff.where(user_id: user_ids).pluck(:user_id)
       customers_ids = Profiles::Customer.where(user_id: user_ids).pluck(:user_id)
@@ -25,7 +29,7 @@ module Profiles
         user
       end
     else
-      User.all
+      query
     end
   end
 

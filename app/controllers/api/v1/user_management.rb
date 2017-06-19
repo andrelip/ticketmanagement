@@ -28,7 +28,7 @@ module API
         end
 
         resource :list do
-          desc "Create a ticket"
+          desc "Create a user"
           get do
             if params[:staff] && staff
               count = TicketSupport.all_tickets(params.merge(count: true))

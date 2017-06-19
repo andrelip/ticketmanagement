@@ -8,7 +8,7 @@ class UserForm extends Component {
   render() {
     // const { name, message, status, id } = this.props.item;
     // const { name, message, status, id } = this.props.item;
-    const { edited_name, edited_email, edited_password, edited_is_staff } = this.props;
+    const { edited_name, edited_email, edited_password, edited_is_staff, errors } = this.props;
 
     return (
       <Panel className={ this.renderClassName(status) }>
@@ -29,6 +29,9 @@ class UserForm extends Component {
                 type="checkbox" checked={ edited_is_staff }
                 onChange={ this.handleCheckBoxChange.bind(this) } />
             </div>
+            <ul>
+            { this.showErrors() }
+            </ul>
             { this.renderButton() }
           </Col>
 
@@ -37,6 +40,13 @@ class UserForm extends Component {
         </Row>
       </Panel>
     );
+  }
+
+  showErrors() {
+    const { errors } = this.props
+    return errors.map((error_message) => {
+      return <li>{ error_message }</li>
+    });
   }
 
   handleCheckBoxChange(event) {

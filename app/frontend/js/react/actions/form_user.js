@@ -12,8 +12,9 @@ export const createUser = (create_params) => {
         const { data } = response.data;
         dispatch({ type: 'clean_user_form', payload: null });
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (request) {
+        const errors = request.response.data.errors;
+        dispatch({ type: 'update_errors', payload: errors })
       });
   };
 };

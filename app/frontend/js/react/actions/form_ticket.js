@@ -7,7 +7,7 @@ export const onChangeField = (field, value) => {
 export const createTicket = (create_params) => {
   return (dispatch) => {
     axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
-    axios.post('/api/v1/create', create_params)
+    axios.post('/api/v1/tickets/create', create_params)
    .then(function (response) {
      const { data } = response.data;
      dispatch({ type: 'clean_ticket_form', payload: null });
@@ -22,7 +22,7 @@ export const createTicket = (create_params) => {
 export const changeStatus = (ticketId, status) => {
   return (dispatch) => {
     axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
-    axios.patch('/api/v1/update', { ticket_id: ticketId, status: status,
+    axios.patch('/api/v1/tickets/update', { ticket_id: ticketId, status: status,
                                     staff: gon.jwt.is_staff})
    .then(function (response) {
      const { data } = response.data;

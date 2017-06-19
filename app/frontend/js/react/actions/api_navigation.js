@@ -30,7 +30,7 @@ export const deleteItem = (item_id) => {
   return (dispatch) => {
     axios({
       method: 'delete',
-      url: `/api/v1/models/annotations/${item_id}`
+      url: `/api/v1/tickets/models/annotations/${item_id}`
     })
       .then(function (response) {
         const { data, count } = response.data;

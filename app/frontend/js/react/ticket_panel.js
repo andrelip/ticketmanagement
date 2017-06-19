@@ -50,15 +50,15 @@ const ListItemsView = ({match}) => {
   let showBar = true;
   switch(match.url) {
     case "/ticket_panel/list/open_tickets":
-      url = "/api/v1/list?status=open";
+      url = "/api/v1/tickets/list?status=open";
       resource_type = 'ticket';
       break;
     case "/ticket_panel/list/closed":
-      url = "/api/v1/list?status=closed";
+      url = "/api/v1/tickets/list?status=closed";
       resource_type = 'ticket';
       break;
     default:
-      url = "/api/v1/list?status=open";
+      url = "/api/v1/tickets/list?status=open";
       resource_type = 'ticket';
   }
 

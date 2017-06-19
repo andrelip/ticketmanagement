@@ -9,9 +9,9 @@ RSpec.describe TicketSupport do
       ticket = TicketSupport.register_ticket @customer.id, "Sample name",
                                              "Sample message with more than 20 char"
       @ticket = ticket[:data]
-      @customer2 = Profiles::Customer.new
-      @customer2.save(validate: false)
-      ticket2 = TicketSupport.register_ticket @customer2.id, "Sample name",
+      customer2 = Profiles::Customer.new
+      customer2.save(validate: false)
+      ticket2 = TicketSupport.register_ticket customer2.id, "Sample name",
                                              "Sample message with more than 20 char"
       @ticket2 = ticket2[:data]
     end

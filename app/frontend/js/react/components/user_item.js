@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Panel, Button, Col, Row, Image, Label } from 'react-bootstrap'
 import { connect } from 'react-redux';
-import { changeStatus } from '../actions/form_ticket';
+import { activateUser, desativateUser } from '../actions/form_user';
 import _ from 'lodash'
 
 class User extends Component {
@@ -21,7 +21,7 @@ class User extends Component {
           </Col>
 
           <Col xs={2}>
-            { this.renderButton(status) }
+            { (id != gon.user_id) ? this.renderButton(disabled) : null }
           </Col>
         </Row>
       </Panel>
@@ -36,18 +36,22 @@ class User extends Component {
     }
   }
 
-  handleButton(new_status) {
-    const { changeStatus, item } = this.props;
-    changeStatus(item.id, new_status)
+  handleButton(isToDisable) {
+    const { activateUser, desativateUser, item } = this.props;
+    if (isToDisable) {
+      desativateUser(item.id)
+    } else {
+      activateUser(item.id)
+    }
   }
 
-  renderButton(status) {
-    if (status == "open") {
-      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >✓ Close</Button>
+  renderButton(disabled) {
+    if (disabled == true) {
+      return <Button bsStyle="primary" className="button" onClick={ this.handleButton.bind(this, false)} >✓ Enable</Button>
     } else {
-      return <Button bsStyle="warning" className="button" onClick={ this.handleButton.bind(this, 'open')} >Reopen</Button>
+      return <Button bsStyle="danger" className="button" onClick={ this.handleButton.bind(this, true)} > Disable </Button>
     }
   }
 }
 
-export default connect(null, { changeStatus })(User);
+export default connect(null, { activateUser, desativateUser })(User);

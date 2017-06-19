@@ -46,22 +46,24 @@ module API
         end
 
         resource :update do
-          desc "Update a ticket status"
+          desc "Update user"
           params do
-            requires :ticket_id, type: String, desc: "Ticket ID"
+            requires :user_id, type: String, desc: "User ID"
           end
           patch do
-            if params[:staff] && staff
-              ticket = TicketSupport.get_ticket params[:ticket_id]
+            if staff.can_manage_users?
+              user = User.find params[:user_id]
+              error!('Cannot modify yourself', 405) if user == current_user
+              user = Profiles.change_user user, params
+              if user[:status] == :ok
+                { data: user[:data] }
+              else
+                status 400
+                { errors: user[:errors] }
+              end
             else
-              ticket = TicketSupport.get_ticket_for_customer(customer.id, params[:ticket_id])
-            end
-            ticket = TicketSupport.update_ticket ticket, params
-            if ticket[:status] == :ok
-              { data: ticket[:data] }
-            else
-              status 400
-              { errors: ticket[:errors] }
+              status 405
+              { error: 'not allowed' }
             end
           end
         end

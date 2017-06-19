@@ -1,4 +1,7 @@
 module Profiles
+
+  USER_UPDATE_PARAMS = [:disabled]
+
   def self.table_name_prefix
     'profiles_'
   end
@@ -42,13 +45,17 @@ module Profiles
     end
   end
 
-  def self.change_user(user, hash)
-    email = user.email
-    user.assign_attributes(hash)
+  def self.change_user(user, params)
+    permitted_params = allowed_params(params, USER_UPDATE_PARAMS)
+    user.assign_attributes(permitted_params)
     if user.save
       { status: :ok, data: user }
     else
       { status: :error, data: user.errors.full_messages }
     end
+  end
+
+  def self.allowed_params(params, list_of_keys)
+    ActionController::Parameters.new(params).permit(list_of_keys)
   end
 end

@@ -22,7 +22,7 @@ export const createTicket = (create_params) => {
 export const changeDisabled = (userId, disabled) => {
   return (dispatch) => {
     axios.defaults.headers.common['Authorization'] = gon.jwt.auth_token;
-    axios.patch('/api/v1/user/update', { user_id: ticketId, disabled: disabled,
+    axios.patch('/api/v1/users/update', { user_id: userId, disabled: disabled,
       staff: gon.jwt.is_staff})
       .then(function (response) {
         dispatch({ type: 'change_user_activation', payload: { userId, disabled } });
@@ -33,9 +33,9 @@ export const changeDisabled = (userId, disabled) => {
   };
 };
 
-export const activateUser = (userID) => {
+export const activateUser = (userId) => {
   return changeDisabled(userId, false)
 };
-export const desativateUser = (userID) => {
+export const desativateUser = (userId) => {
   return changeDisabled(userId, true)
 };

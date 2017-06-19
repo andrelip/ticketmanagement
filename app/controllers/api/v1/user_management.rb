@@ -14,15 +14,21 @@ module API
           desc "Create a ticket"
           params do
             requires :name, type: String, desc: "Shot description of the problem"
-            requires :message, type: String, desc: "Full message of the problem"
+            requires :email, type: String, desc: "Full message of the problem"
+            requires :password, type: String, desc: "Full message of the problem"
           end
           post do
-            ticket = TicketSupport.register_ticket(customer.id, params[:name], params[:message])
-            if ticket[:status] == :ok
-              { data: ticket[:data] }
+            if staff
+            user = Profiles.create_user(params)
+              if user[:status] == :ok
+                { data: user[:data] }
+              else
+                status 400
+                { errors: user[:errors] }
+              end
             else
-              status 400
-              { errors: ticket[:errors] }
+              status 405
+              { error: 'not allowed' }
             end
           end
         end

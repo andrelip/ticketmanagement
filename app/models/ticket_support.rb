@@ -58,10 +58,6 @@ module TicketSupport
     end
   end
 
-  def self.filter_params(params, array_of_keys)
-    params.slice(*array_of_keys)
-  end
-
   def self.allowed_params(params, list_of_keys)
     ActionController::Parameters.new(params).permit(list_of_keys)
   end

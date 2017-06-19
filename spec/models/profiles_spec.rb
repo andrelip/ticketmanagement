@@ -23,5 +23,16 @@ RSpec.describe Profiles do
       expect(get_staff_profile).not_to eq(nil)
     end
 
+    describe "#change_user" do
+      it "change a giver user using a given hash" do
+        user = User.new
+        user.save(validate: false)
+        Profiles.change_user(user, {name: "My new name", email: "jose@gmail.com"})
+        refresh_user = user.reload
+        expect(refresh_user.name).to eq('My new name')
+        expect(refresh_user.email).to eq('jose@gmail.com')
+      end
+    end
+
   end
 end

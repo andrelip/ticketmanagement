@@ -15,4 +15,14 @@ module Profiles
   def self.can_manage_user(profile_staff)
     profile_staff.permissions.split('can')
   end
+
+  def self.change_user(user, hash)
+    email = user.email
+    user.assign_attributes(hash)
+    if user.save
+      { status: :ok, data: user }
+    else
+      { status: :error, data: user.errors.full_messages }
+    end
+  end
 end

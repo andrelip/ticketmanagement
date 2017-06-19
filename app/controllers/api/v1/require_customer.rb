@@ -30,6 +30,8 @@ module API
           def current_user
             if user_id_in_token?
               @user ||= User.find(auth_token[:user_id])
+              return error!('Unauthorized', 401) if @user.disabled
+              @user
             else
               error_response(message: "Internal server error", status: 500)
             end

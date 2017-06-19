@@ -16,6 +16,23 @@ module Profiles
     profile_staff.permissions.split('can')
   end
 
+  def self.list_users(options = {})
+    if options[:with_kind]
+      query = User.all
+      user_ids = query.ids
+      staffs_ids = Profiles::Staff.where(user_id: user_ids).pluck(:user_id)
+      customers_ids = Profiles::Customer.where(user_id: user_ids).pluck(:user_id)
+      query.map do |user|
+        user.user_kind = 'customer' if customers_ids.include?(user.id)
+        # staff overwrite customer
+        user.user_kind = 'staff' if staffs_ids.include?(user.id)
+        user
+      end
+    else
+      User.all
+    end
+  end
+
   def self.change_user(user, hash)
     email = user.email
     user.assign_attributes(hash)

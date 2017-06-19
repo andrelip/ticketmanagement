@@ -28,10 +28,11 @@ RSpec.describe Profiles do
       it "change a giver user using a given hash" do
         user = User.new
         user.save(validate: false)
-        Profiles.change_user(user, {name: "My new name", email: "jose@gmail.com"})
+        Profiles.change_user(user, {name: "My new name", email: "jose@gmail.com", disabled: true})
         refresh_user = user.reload
         expect(refresh_user.name).to eq('My new name')
         expect(refresh_user.email).to eq('jose@gmail.com')
+        expect(refresh_user.disabled).to eq(true)
       end
 
     end

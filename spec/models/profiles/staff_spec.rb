@@ -17,9 +17,9 @@ RSpec.describe Profiles::Staff, type: :model do
     right1 = Profiles::Staff.new(permissions: "can_manage_user")
     right2 = Profiles::Staff.new(permissions: "can_do_other_things can_manage_user")
     wrong1 = Profiles::Staff.new(permissions: "do_nothing")
-    expect(right1.can_manage_user?).to eq(true)
-    expect(right2.can_manage_user?).to eq(true)
-    expect(wrong1.can_manage_user?).to eq(false)
+    expect(right1.can_manage_users?).to eq(true)
+    expect(right2.can_manage_users?).to eq(true)
+    expect(wrong1.can_manage_users?).to eq(false)
   end
 
 end

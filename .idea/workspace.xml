@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a465c17-9736-47dc-9758-d11092c65620" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/profiles/staff.rb" afterPath="$PROJECT_DIR$/app/models/profiles/staff.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/profiles/staff_spec.rb" afterPath="$PROJECT_DIR$/spec/models/profiles/staff_spec.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -30,21 +29,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staff_spec.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="staff_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/models/profiles/staff_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="17" column="83" lean-forward="false" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staff.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="staff.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/profiles/staff.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,8 +133,8 @@
         <option value="$PROJECT_DIR$/app/frontend/js/react/components/ticket_item.js" />
         <option value="$PROJECT_DIR$/db/migrate/20170619004517_add_permissions_to_staff.rb" />
         <option value="$PROJECT_DIR$/app/models/profiles.rb" />
-        <option value="$PROJECT_DIR$/spec/models/profiles/staff_spec.rb" />
         <option value="$PROJECT_DIR$/app/models/profiles/staff.rb" />
+        <option value="$PROJECT_DIR$/spec/models/profiles/staff_spec.rb" />
       </list>
     </option>
   </component>
@@ -666,7 +665,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49298000" />
+    <option name="totallyTimeSpent" value="49379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1680" height="979" extended-state="6" />
@@ -1113,18 +1112,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/profiles/staff_spec.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/profiles/staff.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/profiles/staff.rb">
+    <entry file="file://$PROJECT_DIR$/spec/models/profiles/staff_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="17" column="83" lean-forward="false" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
           <folding />
         </state>
       </provider>

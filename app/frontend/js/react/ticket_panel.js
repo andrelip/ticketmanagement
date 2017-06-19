@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import ReactDOM from "react-dom";
 import ListItems from "./components/list_items";
 import TicketForm from "./components/ticket_form";
+import UserForm from "./components/user_form";
 import reducers from './reducers';
 import {
   BrowserRouter as Router,
@@ -18,10 +19,10 @@ class App extends Component {
   renderForAdmin() {
     if (gon.jwt.can_manage_users == true) {
       return (
-        <div>
+        <span>
           <li><Link to="/user_panel/list">List Users</Link></li>
-          <li><Link to="/user_panel/list">New User</Link></li>
-        </div>
+          <li><Link to="/user_panel/new/new_user">New User</Link></li>
+        </span>
       )
     }
   }
@@ -49,7 +50,8 @@ class App extends Component {
               <Route exact path="/" component={ ListItemsView }/>
               <Route path="/ticket_panel/list/:scope" component={ ListItemsView }/>
               <Route path="/ticket_panel/new/:scope" component={ TicketForm }/>
-              <Route path="/user_panel/:scope" component={ ListItemsView }/>
+              <Route exact path="/user_panel/new/new_user" component={ UserForm }/>
+              <Route path="/user_panel/list" component={ ListItemsView }/>
             </switch>
           </div>
         </Router>

@@ -36,6 +36,17 @@ RSpec.describe Profiles do
 
     end
 
+    describe "#create_user" do
+
+      it "should create a user" do
+        get_user = Profiles.create_user(email: "test@test.com",
+                                         name: "My name", password: "abc12345")
+        expect(get_user[:status]).to eq(:ok)
+        expect(get_user[:data].email).to eq("test@test.com")
+      end
+
+    end
+
     describe "#list_users" do
 
       it "list all users" do

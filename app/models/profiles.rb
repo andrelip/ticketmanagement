@@ -12,10 +12,6 @@ module Profiles
     Staff.find_by user_id: user_id
   end
 
-  def self.can_manage_user(profile_staff)
-    profile_staff.permissions.split('can')
-  end
-
   def self.list_users(options = {})
     if options[:with_kind]
       query = User.all
@@ -30,6 +26,15 @@ module Profiles
       end
     else
       User.all
+    end
+  end
+
+  def self.create_user(params)
+    user = User.new(params)
+    if user.save
+      { status: :ok, data: user }
+    else
+      { status: :error, data: user.errors.full_messages }
     end
   end
 

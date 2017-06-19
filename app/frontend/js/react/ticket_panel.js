@@ -14,6 +14,13 @@ import {
 
 
 class App extends Component {
+
+  renderForAdmin() {
+    if (gon.jwt.can_manage_users == true) {
+      return <li><Link to="/user_panel/list">List Users</Link></li>
+    }
+  }
+
   render() {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store = createStore(reducers, {}, composeEnhancers(
@@ -28,7 +35,8 @@ class App extends Component {
               <li><Link to="/ticket_panel/list/open_tickets">Open Tickets</Link></li>
               <li><Link to="/ticket_panel/list/closed">Closed Tickets</Link></li>
               <li><Link to="/ticket_panel/new/new_ticket">New Ticket</Link></li>
-              <li><a confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a></li>
+              { this.renderForAdmin() }
+              <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a></li>
             </ul>
 
             <hr/>

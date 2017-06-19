@@ -24,12 +24,8 @@ class TicketForm extends Component {
             <p>
                 <input className="h3_input" value={ edited_name } placeholder={"Subject"} onChange={ this.handleChange.bind(this, 'name') } />
             </p>
-            <p>
               <FormControl value={ edited_message } onChange={ this.handleChange.bind(this, 'message')} componentClass="textarea" placeholder="Complete description" rows="8" />
-            </p>
-            <p>
-              { this.renderButton() }
-            </p>
+            { this.renderButton() }
           </Col>
 
           <Col xs={2}>

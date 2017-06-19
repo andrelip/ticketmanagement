@@ -7,11 +7,11 @@ class ItemSelectFormater extends Component {
     const { item, resource_type } = this.props;
     switch (resource_type) {
       case "ticket":
-        return (<TicketItem item={item} />);
+        return (<TicketItem item={item} key={ "ticket" + item.id}  />);
       case "user":
-        return (<UserItem item={item} />);
+        return (<UserItem item={item} key={ "user" + item.id } />);
       default:
-        return (<TicketItem item={item} />)
+        return (<TicketItem item={item} key={ "user" + item.id } />)
     }
   }
 }

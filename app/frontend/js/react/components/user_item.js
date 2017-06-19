@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 class User extends Component {
   render() {
-    const { name, message, status, id, user_name, user_email } = this.props.item;
+    const { name, message, status, id, user_name, user_email, disabled } = this.props.item;
     return (
       <Panel className={ this.renderClassName(status) }>
         <Row>
@@ -15,6 +15,7 @@ class User extends Component {
             <h3> { name} </h3>
 
             <p>{ status }</p>
+            <p>{ disabled ? "disabled" : "enabled"  }</p>
             <p><Label>{ id }</Label> { user_name } { `<${user_email}>`} </p>
 
           </Col>

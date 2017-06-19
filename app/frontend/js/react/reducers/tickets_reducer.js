@@ -17,6 +17,17 @@ export default (state = INITIAL_STATE, action) => {
         current_page: final_current_page,
         count: count,
         query_string: query_string};
+    case 'change_user_activation':
+      const { userId, disabled }  = action.payload;
+      const user_items = _.cloneDeep(state.search_items);
+      const mapped_items = _.filter(user_items, (item) => {
+        return item.id != userId;
+      });
+      const item = _.find(user_items, (item) => {
+        return item.id != userId;
+      });
+      item.disabled = disabled;
+      return { ...state, search_items: [...mapped_items, item] };
     case 'item_deleted':
       return { ...state, search_items: state.search_items.filter(item => item.id !== action.payload), count: (state.count - 1) };
     default:

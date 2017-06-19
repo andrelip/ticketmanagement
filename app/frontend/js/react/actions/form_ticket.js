@@ -11,7 +11,6 @@ export const createTicket = (create_params) => {
    .then(function (response) {
      const { data } = response.data;
      dispatch({ type: 'clean_ticket_form', payload: null });
-     dispatch({type: 'new_notification_message', payload: `${slug} atualizado`})
    })
    .catch(function (error) {
      console.log(error);

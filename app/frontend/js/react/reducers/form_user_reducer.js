@@ -1,4 +1,4 @@
-const INITIAL_STATE = { edited_password: '', edited_name: '', edited_email: '', edited_type: ''};
+const INITIAL_STATE = { edited_password: '', edited_name: '', edited_email: '', edited_is_staff: ''};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

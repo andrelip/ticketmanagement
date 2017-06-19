@@ -19,7 +19,9 @@ module API
           end
           post do
             if staff
-            user = Profiles.create_user(params)
+              user_kind = params[:is_staff] ? :staff : :customer
+              user = Profiles.create_user(user_kind, name: params[:name], email: params[:email], 
+                                          password: params[:password])
               if user[:status] == :ok
                 { data: user[:data] }
               else

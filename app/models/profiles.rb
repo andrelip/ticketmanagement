@@ -1,7 +1,7 @@
 module Profiles
 
   USER_UPDATE_PARAMS = [:disabled]
-  USER_CREATE_PARAMS = [:name, :email, :password, :kind]
+  USER_CREATE_PARAMS = [:name, :email, :password]
 
   def self.table_name_prefix
     'profiles_'
@@ -20,7 +20,7 @@ module Profiles
     Staff.find_by user_id: user_id
   end
 
-  def self.get_staff(user_id)
+  def self.create_staff(user_id)
     Staff.create user_id: user_id
   end
 
@@ -45,13 +45,24 @@ module Profiles
     end
   end
 
-  def self.create_user(params)
-    permitted_params = allowed_params(params, USER_CREATE_PARAMS)
-    user = User.new(permitted_params)
-    if user.save
-      { status: :ok, data: user }
+  def self.create_user(user_kind, params)
+    ActiveRecord::Base.transaction do
+      permitted_params = allowed_params(params, USER_CREATE_PARAMS)
+      user = User.new(permitted_params)
+      if user.save
+        create_profile(user.id, user_kind)
+        { status: :ok, data: user }
+      else
+        { status: :error, errors: user.errors.full_messages }
+      end
+    end
+  end
+
+  def self.create_profile(user_id, user_kind)
+    if user_kind == user_kind
+      create_staff(user_id)
     else
-      { status: :error, data: user.errors.full_messages }
+      create_customer(user_id)
     end
   end
 
@@ -66,6 +77,7 @@ module Profiles
   end
 
   def self.allowed_params(params, list_of_keys)
+    # I know it's from another layer. But it's the best built-in method to filter a hash.
     ActionController::Parameters.new(params).permit(list_of_keys)
   end
 end

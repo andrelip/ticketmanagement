@@ -8,7 +8,7 @@ class UserForm extends Component {
   render() {
     // const { name, message, status, id } = this.props.item;
     // const { name, message, status, id } = this.props.item;
-    const { edited_name, edited_email, edited_password, edited_type } = this.props;
+    const { edited_name, edited_email, edited_password, edited_is_staff } = this.props;
 
     return (
       <Panel className={ this.renderClassName(status) }>
@@ -22,6 +22,13 @@ class UserForm extends Component {
                 <input className="h3_input" value={ edited_email } placeholder={"Email"} onChange={ this.handleChange.bind(this, 'email') } />
                 <input type="password" className="h3_input" value={ edited_password } placeholder={"Password"} onChange={ this.handleChange.bind(this, 'password') } />
             </p>
+            <div>
+              <span> Support Team</span>
+              < input
+                name={ 'kind' }
+                type="checkbox" checked={ edited_is_staff }
+                onChange={ this.handleCheckBoxChange.bind(this) } />
+            </div>
             { this.renderButton() }
           </Col>
 
@@ -30,6 +37,12 @@ class UserForm extends Component {
         </Row>
       </Panel>
     );
+  }
+
+  handleCheckBoxChange(event) {
+    const target = event.target;
+    const value = target.checked;
+    this.props.onChangeField('is_staff', value);
   }
 
   handleChange(field, event) {
@@ -51,8 +64,8 @@ class UserForm extends Component {
 
   handleCreateButton() {
     const { createUser } = this.props;
-    const {  edited_name, edited_email, edited_password, edited_type } = this.props;
-    createUser({name: edited_name, email: edited_email, password: edited_password});
+    const {  edited_name, edited_email, edited_password, edited_is_staff } = this.props;
+    createUser({ name: edited_name, email: edited_email, password: edited_password, is_staff: edited_is_staff });
   }
 }
 

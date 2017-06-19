@@ -22,6 +22,7 @@ class App extends Component {
         <span>
           <li><Link to="/user_panel/list">List Users</Link></li>
           <li><Link to="/user_panel/new/new_user">New User</Link></li>
+          <li><a href="/tickets/report.pdf">Download Reports</a></li>
         </span>
       )
     }

@@ -14,11 +14,12 @@ class TicketPanelController < SpaController
     months_ago = params[:months_ago] || 1
     staff = Profiles.get_staff current_user
     if staff
-      @tickets = TicketSupport.all_tickets(per_page: 100, status: :closed).where("created_at > ?", Date.today - months_ago.month)
+      tickets = TicketSupport.all_tickets(per_page: 100, status: :closed).where("created_at > ?", Date.today - months_ago.month)
       respond_to do |format|
         format.pdf do
-          pdf = ::ReportPdf.new(@tickets, total_entries, months_ago)
-          send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+          pdf = ::ReportPdf.new(current_user.email, tickets, total_entries, months_ago)
+          timestamp = Time.now.strftime("%FT%R")
+          send_data pdf.render, filename: "report_closed_tickets_#{timestamp}.pdf", type: 'application/pdf'
         end
       end
     end

@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_user_is_enabled
-    binding.pry
     if current_user.disabled?
       sign_out(current_user)
       redirect_to new_user_session_path

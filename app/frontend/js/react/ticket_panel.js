@@ -17,7 +17,12 @@ class App extends Component {
 
   renderForAdmin() {
     if (gon.jwt.can_manage_users == true) {
-      return <li><Link to="/user_panel/list">List Users</Link></li>
+      return (
+        <div>
+          <li><Link to="/user_panel/list">List Users</Link></li>
+          <li><Link to="/user_panel/list">New User</Link></li>
+        </div>
+      )
     }
   }
 

@@ -42,7 +42,7 @@ class Ticket extends Component {
 
   renderButton(status) {
     if (status == "open") {
-      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >✓ OK</Button>
+      return <Button bsStyle="success" className="button" onClick={ this.handleButton.bind(this, 'closed')} >✓ Close</Button>
     } else {
       return <Button bsStyle="warning" className="button" onClick={ this.handleButton.bind(this, 'open')} >Reopen</Button>
     }

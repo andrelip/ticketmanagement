@@ -6,7 +6,7 @@ const INITIAL_STATE = { search_items: [],
   per_page: 10,
   pages: 1,
   query_string: null,
-  notify_message: ''};
+  notify_message: '' };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

@@ -48,6 +48,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   # For better inspect
   gem 'awesome_print'
+  gem 'faker'
 end
 
 group :development do

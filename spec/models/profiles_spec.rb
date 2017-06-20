@@ -25,13 +25,13 @@ RSpec.describe Profiles do
 
     describe "#change_user" do
 
-      it "change a giver user using a given hash" do
-        user = User.new
-        user.save(validate: false)
-        Profiles.change_user(user, {name: "My new name", email: "jose@gmail.com", disabled: true})
+      it "change cam disable/enable a user" do
+        user = Profiles.create_user(:staff, email: "test@test.com",
+                                    name: "My name", password: "abc12345")
+        user = user[:data]
+        u = Profiles.change_user(user, { name: "My new name", email: "jose@gmail.com",
+                                                 disabled: true} )
         refresh_user = user.reload
-        expect(refresh_user.name).to eq('My new name')
-        expect(refresh_user.email).to eq('jose@gmail.com')
         expect(refresh_user.disabled).to eq(true)
       end
 
@@ -40,7 +40,7 @@ RSpec.describe Profiles do
     describe "#create_user" do
 
       it "should create a user" do
-        get_user = Profiles.create_user(email: "test@test.com",
+        get_user = Profiles.create_user(:staff, email: "test@test.com",
                                          name: "My name", password: "abc12345")
         expect(get_user[:status]).to eq(:ok)
         expect(get_user[:data].email).to eq("test@test.com")

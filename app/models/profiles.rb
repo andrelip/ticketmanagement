@@ -60,7 +60,7 @@ module Profiles
   end
 
   def self.create_profile(user_id, user_kind)
-    if user_kind == user_kind
+    if user_kind == :staff
       create_staff(user_id)
     else
       create_customer(user_id)

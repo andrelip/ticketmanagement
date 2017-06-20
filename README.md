@@ -63,18 +63,9 @@ For security we don' have a method to create the master admin. You should get th
 
 Used RSPEC and mocha / chai.
 
-1. Run rails console:
+1. Bash:
       ```bash
-      bundle exec rails s
+      bundle exec rspec
+      npm run test
       ```
-      
-2. Create a staff profile:
-      
-      ```ruby
-      profile_creation = Profiles.create_user(:staff, name: "master", email: "master@test.com", password: "changeme")
-      user_model = profile_creation[:data]
-      staff_model = Profiles.get_staff(user_model)
-      staff_model.update(permissions: "can_manage_users")
-      ```
-      This is a little verbose but we are respecting the boundaries and context and accessing the models thought a public API.
-      
+  
